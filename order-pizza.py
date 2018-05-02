@@ -3,6 +3,7 @@ from selenium import webdriver
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.common.keys import Keys
+import time
 
 browser = webdriver.Firefox()
 browser.get("https://ginospizza.webordering.ca/")
@@ -22,9 +23,14 @@ for x in results:
 
 """
 password.send_keys(Keys.RETURN)
-wait = WebDriverWait(browser, 5)
 
-browser.find_elements_by_class("btn green").click()
+
+WebDriverWait(browser, 5)
+time.sleep(5)
+print(browser.page_source)
+browser.find_element_by_css_selector('.btn.green').click()
+
+
 
 
 try:
